@@ -1,0 +1,995 @@
+/* Container tổng thể */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+  
+  /* Header Top - Logo và Search */
+  .headerTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: #fcf9fb;
+    gap: 30px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 100;
+  }
+  
+  /* Logo bên trái */
+  .logoWrapper {
+    flex-shrink: 0;
+  }
+  
+  .logoText h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #d63384;
+    letter-spacing: 1px;
+  }
+  
+  .logoText p {
+    margin: 0;
+    font-size: 0.7rem;
+    color: #666;
+    letter-spacing: 1px;
+  }
+  
+  /* Thanh tìm kiếm ở giữa */
+  .searchWrapper {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 20px;
+  }
+  
+  .searchForm {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid #e0e0e0;
+  }
+  
+  .searchInput {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .searchInput::placeholder {
+    color: #999;
+    font-style: italic;
+  }
+  
+  .searchButton {
+    background: #d63384;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .searchButton:hover {
+    background: #c21e6e;
+  }
+  
+  /* Placeholder để cân bằng layout */
+  .placeholderRight {
+    width: 100px;
+    flex-shrink: 0;
+  }
+  
+  /* Header Bottom - Menu */
+  .headerBottom {
+    background: #ee9be3;
+    padding: 0 5%;
+    position: relative;
+    z-index: 99;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  
+  .nav ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    margin: 0;
+    padding: 15px 0;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav li {
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    position: relative;
+    color: white;
+    padding: 10px 0;
+  }
+  
+  .nav li:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+  
+  /* Dropdown Menu */
+  .hasDropdown {
+    position: relative;
+  }
+  
+  .menuTitle {
+    display: inline-block;
+    font-weight: 600;
+  }
+  
+  .dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    min-width: 320px;
+    width: max-content;
+  }
+  
+  .hasDropdown:hover .dropdownMenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  /* Header của dropdown */
+  .dropdownHeader {
+    background: #ee9be3;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .dropdownHeader h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Nội dung dropdown */
+  .dropdownContent {
+    padding: 5px 0;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .menuColumn ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menuColumn li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 25px;
+    color: #333;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+  }
+  
+  .menuColumn li:last-child {
+    border-bottom: none;
+  }
+  
+  .menuColumn li:hover {
+    background: #fceaf9;
+    padding-left: 30px;
+  }
+  
+  .menuColumn li:hover .menuItem {
+    color: #ee9be3;
+  }
+  
+  .menuColumn li:hover .arrow {
+    color: #ee9be3;
+    transform: translateX(3px);
+  }
+  
+  /* Icon trong menu */
+  .menuColumn li img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    transition: all 0.2s ease;
+  }
+  
+  .menuColumn li:hover img {
+    transform: scale(1.05);
+  }
+  
+  .menuItem {
+    flex: 1;
+    color: #333;
+    transition: color 0.2s ease;
+  }
+  
+  /* Arrow trong menu */
+  .arrow {
+    color: #999;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    margin-left: auto;
+  }
+  
+  /* Best Seller không có arrow */
+  .menuColumn li.bestSeller .arrow {
+    display: none;
+  }
+  
+  .menuColumn li.bestSeller {
+    color: #ee9be3;
+    font-weight: 700;
+  }
+  
+  .menuColumn li.bestSeller .menuItem {
+    color: #ee9be3;
+  }
+  
+  .menuColumn li.bestSeller:hover {
+    background: #ee9be3;
+  }
+  
+  .menuColumn li.bestSeller:hover .menuItem {
+    color: white;
+  }
+  
+  .menuColumn li.bestSeller:hover img {
+    filter: brightness(0) invert(1);
+  }
+  
+  /* Footer của dropdown */
+  .dropdownFooter {
+    padding: 12px 25px;
+    border-top: 1px solid #f0f0f0;
+    background: #fceaf9;
+    border-radius: 0 0 12px 12px;
+    text-align: center;
+  }
+  
+  .cosmetics {
+    color: #ee9be3;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+  
+  /* Điều chỉnh cho menu GÓC LÀM ĐẸP không có icon */
+  .menuColumn li:not(:has(img)) {
+    padding-left: 25px;
+  }
+  
+  .menuColumn li:not(:has(img)) .menuItem {
+    padding-left: 0;
+  }
+  
+  /* Mũi tên chỉ xuống cho menu có dropdown */
+  .hasDropdown::after {
+    content: "▼";
+    font-size: 10px;
+    margin-left: 5px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  
+  .hasDropdown:hover::after {
+    transform: rotate(180deg);
+  }
+  
+  /* Carousel Styles */
+  .inslideron {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .vslieronmel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .slickPrev,
+  .slickNext {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.3);
+    backdrop-filter: blur(5px);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  .slickPrev {
+    left: 20px;
+  }
+  
+  .slickNext {
+    right: 20px;
+  }
+  
+  .slickPrev:hover,
+  .slickNext:hover {
+    background: rgba(255,255,255,0.5);
+    transform: translateY(-50%) scale(1.1);
+  }
+  
+  .slickList {
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .slickTrack {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+  }
+  
+  .slickSlide {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+  
+  .viewoprelative {
+    position: relative;
+    width: 100%;
+  }
+  
+  .viewoprelative a {
+    display: block;
+    width: 100%;
+  }
+  
+  .viewoprelative img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .carouselDots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .carouselDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .carouselDot.active {
+    background: #ee9be3;
+    width: 30px;
+    border-radius: 6px;
+  }
+  
+  /* Responsive Carousel */
+  @media (max-width: 768px) {
+    .slickPrev,
+    .slickNext {
+      width: 35px;
+      height: 35px;
+    }
+    
+    .slickPrev svg,
+    .slickNext svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .carouselDots {
+      gap: 8px;
+    }
+    
+    .carouselDot {
+      width: 8px;
+      height: 8px;
+    }
+    
+    .carouselDot.active {
+      width: 20px;
+    }
+  }
+  
+  /* Layout nội dung */
+  .mainLayout {
+    display: flex;
+    flex: 1;
+    padding: 30px 5%;
+    gap: 30px;
+    background-color: #fdfdfd;
+  }
+  
+  .item2 { 
+    flex: 3;
+    padding: 20px 5%;
+  }
+  
+  .item3 { 
+    flex: 1; 
+    background: #fceaf9; 
+    padding: 20px; 
+    border-radius: 12px; 
+    border: 1px dashed #ee9be3; 
+    height: fit-content;
+  }
+  
+  /* Lưới sản phẩm */
+  .mainContent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Card sản phẩm */
+  .product {
+    background: white;
+    border: 1px solid #ee9be3;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(238, 155, 227, 0.3);
+  }
+  
+  .productImage {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .productImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .productName h5 {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    height: 2.6em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .productPrice { 
+    display: flex; 
+    flex-direction: column; 
+    margin: 5px 0; 
+  }
+  
+  .price { 
+    color: #d63384; 
+    font-weight: bold; 
+    font-size: 1rem; 
+  }
+  
+  .oldPrice { 
+    text-decoration: line-through; 
+    color: #aaa; 
+    font-size: 0.8rem; 
+  }
+  
+  .percent { 
+    color: #ff4d4f; 
+    font-weight: bold; 
+    font-size: 0.8rem; 
+    margin-left: 5px; 
+  }
+  
+  .productRemain {
+    height: 16px;
+    background: linear-gradient(90deg, #ffecb3 0%, #ffb200 100%);
+    border-radius: 8px;
+    font-size: 9px;
+    text-align: center;
+    font-weight: bold;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .productRemain span {
+    color: #333;
+    font-size: 10px;
+  }
+  
+  .productActions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .buyButton {
+    flex: 1;
+    background: #ee9be3;
+    color: white;
+    padding: 8px 0;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+  }
+  
+  .buyButton a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .buyButton:hover { 
+    background: #d63384;
+    transform: scale(1.02);
+  }
+  
+  .cartButton {
+    flex: 1;
+    background: #ffffff;
+    color: #ee9be3;
+    padding: 8px 0;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #ee9be3;
+  }
+  
+  .cartButton a {
+    color: #ee9be3;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .cartButton:hover {
+    background: #fceaf9;
+    transform: scale(1.02);
+    border-color: #d63384;
+  }
+  
+  .cartButton:hover a {
+    color: #d63384;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    background: #f4e6e5;
+    color: #333;
+    margin-top: auto;
+    padding: 50px 0 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .footerContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  
+  .gridTemplateFooter {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+  
+  .gridTemplateFooter1 {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  .gridTemplatt {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  
+  .gridTemplatt1 img {
+    width: 90px;
+    height: auto;
+  }
+  
+  .gridTemplatt2 h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #333;
+    letter-spacing: 1px;
+  }
+  
+  .bdestion {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .bdestion a {
+    color: #333;
+    text-decoration: underline;
+    transition: opacity 0.3s;
+  }
+  
+  .bdestion a:hover {
+    opacity: 0.7;
+    text-decoration: none;
+  }
+  
+  .gridTemplattContent {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #333;
+    padding: 10px 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .griDoftheAnhtoan {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+  }
+  
+  .griDoftheAnhtoan img {
+    height: 65px;
+    width: auto;
+    transition: transform 0.3s;
+    background: rgba(255,255,255,0.95);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .griDoftheAnhtoan img:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  }
+  
+  .logoBct {
+    margin-top: 10px;
+  }
+  
+  .logoBct img {
+    max-width: 220px;
+    height: auto;
+    transition: opacity 0.3s;
+  }
+  
+  .logoBct img:hover {
+    opacity: 0.9;
+  }
+  
+  .gridTemplateFooter2 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .gridTemplatRight {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .gridTemplatRight img {
+    height: 95px;
+    width: auto;
+    transition: transform 0.3s;
+    background: rgba(255,255,255,0.95);
+    border-radius: 15px;
+    padding: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+    cursor: pointer;
+  }
+  
+  .gridTemplatRight img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+  
+  .gridMenuList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .gridMenuListTitl h3 {
+    margin: 0 0 18px 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 8px;
+  }
+  
+  .gridMenuListTitl h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #333;
+  }
+  
+  .gridMenuListTitl ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .gridMenuListTitl li {
+    margin-bottom: 10px;
+  }
+  
+  .gridMenuListTitl a {
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  
+  .gridMenuListTitl a:hover {
+    opacity: 0.7;
+    transform: translateX(3px);
+    text-decoration: underline;
+  }
+  
+  .descot2 {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .descot2 svg {
+    vertical-align: middle;
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .descot2 svg path {
+    fill: #333;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .gridTemplateFooter {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    .gridMenuList {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+    
+    .gridTemplatRight {
+      justify-content: flex-start;
+      gap: 18px;
+    }
+    
+    .gridTemplatRight img {
+      height: 85px;
+    }
+    
+    .griDoftheAnhtoan img {
+      height: 60px;
+    }
+    
+    .mainContent {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .headerTop {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .logoWrapper {
+      text-align: center;
+    }
+    
+    .placeholderRight {
+      display: none;
+    }
+    
+    .searchWrapper {
+      order: 2;
+    }
+    
+    .headerBottom {
+      padding: 0 5% 10px 5%;
+    }
+    
+    .nav ul {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .nav li {
+      font-size: 0.75rem;
+    }
+    
+    .footer {
+      padding: 40px 0 0;
+    }
+    
+    .gridTemplatt {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
+    
+    .gridMenuList {
+      grid-template-columns: 1fr;
+      gap: 25px;
+      text-align: center;
+    }
+    
+    .gridMenuListTitl h3::after {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+    }
+    
+    .gridTemplatRight {
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .gridTemplatRight img {
+      height: 80px;
+      padding: 10px;
+    }
+    
+    .griDoftheAnhtoan {
+      justify-content: center;
+    }
+    
+    .griDoftheAnhtoan img {
+      height: 55px;
+      padding: 8px;
+    }
+    
+    .logoBct {
+      text-align: center;
+    }
+    
+    .bdestion {
+      text-align: left;
+    }
+    
+    .gridTemplattContent {
+      text-align: center;
+    }
+    
+    .mainContent {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .gridMenuList {
+      gap: 20px;
+    }
+    
+    .gridTemplatRight {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    
+    .gridTemplatRight img {
+      height: 70px;
+      padding: 8px;
+    }
+    
+    .griDoftheAnhtoan img {
+      height: 50px;
+      padding: 6px;
+    }
+    
+    .logoBct img {
+      max-width: 180px;
+    }
+    
+    .gridTemplatt1 img {
+      width: 70px;
+    }
+    
+    .gridTemplatt2 h3 {
+      font-size: 1.2rem;
+    }
+  }
