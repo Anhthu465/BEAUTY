@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense,useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import SimpleSlider from "../components/slider/slider.js"; 
 import Link from "next/link";
@@ -236,7 +236,7 @@ const productsDatabase = {
   }
 };
 
-export default function ChiTietSanPham() {
+function ChiTietSanPhamContent() {
   const searchParams = useSearchParams();
   const productId = searchParams.get("id");
   
@@ -616,11 +616,14 @@ export default function ChiTietSanPham() {
       <Footer />
     </div>
   );
+} // <--- Dấu này để đóng hàm ChiTietSanPhamContent
+
+// Hàm này phải đứng RIÊNG BIỆT, không nằm trong dấu { } nào cả
+export default function ChiTietSanPham() {
+  return (
+    <Suspense fallback={<div>Đang tải sản phẩm...</div>}>
+      <ChiTietSanPhamContent />
+    </Suspense>
+  );
 }
-
-
-
-
-
-
 
